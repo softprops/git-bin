@@ -3,4 +3,4 @@
 n=$1 || 10
 
 
-git for-each-ref --sort=-committerdate refs/heads/ --count=$n
+git for-each-ref --sort=-committerdate --count=$n  'refs/heads'
