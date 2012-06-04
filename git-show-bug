@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# show the bug associated with this branch
+# expects one argument, bug_number
+function show() {
+  TRACKER=`git config bugtracker.show`
+  if [[ ! "$TRACKER" ]]; then
+      echo "no bugtracker configured. configure one with git config bugtracker.show http://host.com/path/?param="
+      exit 1
+  fi
+
+  BROWSER="xdg-open" #`git config browser 2>/dev/null` || "xdg-open"
+
+  "$BROWSER" "$TRACKER$1" 2>/dev/null &
+  exit 0
+}
+
+if [[ $# == 1 ]]; then
+   show "$1"
+else
+   show `git branch | awk '/\*/ { print $2 }' | sed 's/[a-zA-Z_]*//'`
+fi
