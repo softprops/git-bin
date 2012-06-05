@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# https://help.github.com/articles/creating-project-pages-manually
+
+git checkout --orphan gh-pages \
+  && git rm -rf . \
+  && echo "My Github Page" > index.html \
+  && git add . \
+  && git commit -a -m "First pages commit" \
+  && git push -u origin gh-pages
