@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# http://stackoverflow.com/a/1260982
+
+module=$1
+
+NAME=$(echo $module | sed 's/\/$//g')
+git config --remove-section submodule.$NAME
+git config --file=.gitmodules --remove-section submodule.$NAME
+git rm --cached $NAME
+
+
+
+
