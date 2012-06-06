@@ -1,0 +1,4 @@
+#!/bin/sh
+
+WHO=`git config user.name`
+git log -p --author=$WHO
