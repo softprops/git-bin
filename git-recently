@@ -3,4 +3,4 @@
 n=$1 || 10
 
 
-git for-each-ref --sort=-committerdate --count=$n  'refs/heads'
+git for-each-ref --sort=-committerdate --count=$n --format="%(objectname:short) %(objecttype) %(refname:short)"  'refs/heads'
